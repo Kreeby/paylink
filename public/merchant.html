@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript" src="./jquery-3.4.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<link rel="stylesheet" href="style.css" />
+
+<script type="text/javascript">
+
+      
+       function sendData() {
+                  var code_t = $('#code').text();
+                  var name = $('#name').text();
+                  var amount = $('#amount').text();
+                  var transaction_id = $('#transaction_id').text();
+                  var currency = $('#currency').text();
+                  var logo_url = $('#logo').text();
+                  var code = $('#code2').val();
+                    $.ajax({
+                            type:"POST",
+                            url:"http://178.128.193.84/retrieveInfo",
+
+                            data:{code: code_t, name:name, amount:amount, transaction_id:transaction_id, currency:currency, generated_code:code, logo_url: logo_url},
+                            success:function(data) {
+                              
+                              console.log(transaction_id)
+                              window.location.href = 'wait.html' + '#' + transaction_id
+
+                            },
+                            error:function() {
+                              
+                                console.log(code_t)
+                                console.log(amount)
+                                console.log(currency)
+                                console.log(transaction_id)
+                                console.log(name)
+                                console.log(code)
+                                console.log(logo_url)
+                                
+                              
+                              
+                            }
+                          });
+                } 
+
+    </script>
+
+
+    
+<title>Title of the document</title>
+</head>
+
+<body>
+<script type="text/javascript">
+
+
+    //  function setname() {
+    //   var num = Math.floor(10000000 + Math.random() * 90000000);
+    //   document.getElementById('transaction_id').innerText = "RN_" + num;
+
+    // }
+
+      // window.onload = setname;
+        var successCode='aaa';
+        // const proxyurl = "https://cors-anywhere.herokuapp.com/";
+      
+        function sendAjax() {
+          var code = $('#code2').val();
+          console.log(code);
+            // var message = $('#message').val();
+            // window.opener = "merchant.html"
+            var test;
+             // var txtName = document.getElementById("txtName");
+
+              var logo = 'logo' + '1';
+              // document.getElementById(logo).value = 'something';
+
+            $.ajax({
+              type: "POST",
+              url: "http://178.128.193.84/checkCode",
+              data: "code="+code,
+              success:function(data){
+                successCode = data;
+                $.modal.close();
+                
+                if(data != null) {
+                  
+                  // console.log(code_t);
+                  sendData();
+                }
+              }
+              });
+
+        }
+        
+
+
+    </script>
+  <!-- <p id="name">Azercell </p>
+  <p id="code">+994 70 290 09 14 </p>
+  <p id="amount">25</p>
+  <p id="currency">AZN</p>
+  <p>14 Oct, 2019 </p>
+  <p id="transaction_id">RN 39187400 </p>
+
+  <a href="#ex1", rel="modal:open">Button </a>
+</button>
+
+<div id="ex1" class="modal">
+  <h3>Please enter the 6-digit verification code we sent via Paylink:</h3>
+
+
+      <input id = "code2" type="text" name = "code" maxLength="6" size="6" min="0" max="9" pattern="[0-9]{6}" />
+      <input type="submit"  onclick="sendAjax()" value="Send" name="send">
+
+
+
+
+</div> -->
+
+
+<!-- <div _ngcontent-fvn-c6="" class="container-middle"><div _ngcontent-fvn-c6="" class="payment-part">
+  <h3 _ngcontent-fvn-c6=""> Nar </h3><div _ngcontent-fvn-c6="" class="flex additional_info_wrapper">
+    <div _ngcontent-fvn-c6="" class="payment-container">
+  <p _ngcontent-fvn-c6="" class="payment-second-title">Məlumatı əlavə edin</p>
+  <div _ngcontent-fvn-c6="" class="label-block">
+    <span _ngcontent-fvn-c6="">Ödəniş növü</span>
+    <label _ngcontent-fvn-c6="">Nömrə</label>
+  </div>
+  <div _ngcontent-fvn-c6="" class="label-block">
+    <span _ngcontent-fvn-c6="">Prefiks</span>
+    <label _ngcontent-fvn-c6="">070</label>
+  </div>
+  <div _ngcontent-fvn-c6="" class="label-block">
+    <span _ngcontent-fvn-c6="">Nömrə</span>
+    <label _ngcontent-fvn-c6="">8905515</label>
+  </div>
+  <div _ngcontent-fvn-c6="" class="field-block">
+    <label _ngcontent-fvn-c6="">Məbləğ</label>
+    <ul _ngcontent-fvn-c6="" class="number-ul amount-field">
+      <li _ngcontent-fvn-c6="">
+        <input _ngcontent-fvn-c6="" class="first-part-input ng-untouched ng-pristine ng-invalid" name="payAmount" placeholder="0" required="" type="text" min="1" max="250">
+        <input _ngcontent-fvn-c6="" class="second-part-input ng-untouched ng-pristine ng-valid" placeholder=".00" type="text">
+      </li>
+        <li _ngcontent-fvn-c6=""> AZN </li>
+      </ul>
+      <span _ngcontent-fvn-c6="" class="error-label">Məbləğ 1 - 250 AZN aralığında olmalıdır.</span>
+    </div>
+    <div _ngcontent-fvn-c6="" class="field-block">
+
+      <div class="nice-select card-type-select" tabindex="0" data-value="visa">
+        <span class="current"> Visa / Visa Electron </span>
+
+      </div>
+    </div>
+    <ul _ngcontent-fvn-c6="" class="bottom-buttons">
+      <li _ngcontent-fvn-c6="">
+        <a _ngcontent-fvn-c6="" onclick="window.history.back()">Geri qayıt</a>
+      </li>
+      <li _ngcontent-fvn-c6="">
+        <a _ngcontent-fvn-c6="">Davam et</a>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+</div> -->
+
+<div _ngcontent-qgu-c3="" class="payment-part">
+  <h3 _ngcontent-qgu-c3="" id="name"> Nar </h3>
+  <h5 _ngcontent-qgu-c3="">Kart melumatlarini elave edin</h5><!---->
+  <div _ngcontent-qgu-c3="" class="label-block">
+    <div class="">
+  <p id="transaction_props">
+    <input type="hidden" name="trans_id" value="Fi4ylLgruuxd+F5FmvvaGUgdAAU=" readonly="readonly">
+    <input type="hidden" name="count" value="1" readonly="readonly">
+  </p>
+
+      <input type="hidden" name="cardname" id="cardname" value="Goldenpay">
+            <div class="details-con saved-payments">
+        <div class="payment-desc">
+                  <h3 message="amountToBePaid">Logo URL</h3>
+                  <p id="logo">logo.com</p>
+                  <h3 message="amountToBePaid">Mebleg</h3>
+                  <p id="amount">1.00 </p>
+                  <h3 message="amountToBePaid">Valyuta</h3>
+                  <p id="currency">AZN</p>
+                  <h3 message="amountToBePaid">Tranzaksiya Nomresi</h3>
+                  <p id="transaction_id">RN_39187400</p>
+                  <h3 message="amountToBePaid">Telefon Nomresi</h3>
+                  <p id="code">+994 70 290 09 14 </p>
+                  
+              </div>
+              <div class="field-block">
+                <label message="cardNumber" for="">Kartin nomresi</label>
+                <input type="tel" id="cardnumber" autocomplete="off" class="cardnumber" maxlength="19" placeholder="0000 0000 0000 0000">
+        <input id="cardnr" type="hidden" name="cardnr" autocomplete="off" size="19" maxlength="19">
+              </div>
+              <div class="small-fields">
+                <div class="field-block">
+                  <label message="expirationDate" for="">Bitme Tarixi</label>
+                  <input type="tel" id="expire_date" autocomplete="off" class="expire_date" maxlength="5" placeholder="00/00">
+          <input id="expmonth" type="hidden" name="validMONTH" autocomplete="off" size="2" maxlength="2" placeholder="01" min="1" max="12">
+          <input id="expyear" type="hidden" name="validYEAR" autocomplete="off" size="2" maxlength="2" placeholder="18" min="18" max="99">
+                </div>
+                <div class="field-block">
+                  <label message="cvvcvc2" for="">CVV / CVC2</label>
+                  <input id="cvc2" type="tel" name="cvc2" autocomplete="off" size="4" maxlength="3" placeholder="123" min="0" max="999">
+                </div>
+              </div>
+
+              <div class="action-block pay-page">
+        <!-- <button message="pay" type="submit" class="success-sm">ÖDƏ</button> -->
+        <a href="#ex1"> 
+
+          <img alt="URL" src="Group 9@3x.png"
+         width="150" height="55">
+
+        </a>
+
+        <a href="#ex1" rel="modal:open"> 
+          <img alt="URL" src="paylinkButton@3x.png"
+         width="150" height="55">
+
+        </a>
+
+
+        </div>
+            </div>
+</form>
+        </div>
+
+  </div>
+</div>
+
+
+<div id="ex1" class="modal">
+  <h3>Please enter the 6-digit verification code we sent via Paylink:</h3>
+
+
+      <input id = "code2" type="text" name = "code" maxLength="6" size="6" min="0" max="9" pattern="[0-9]{6}" />
+      <input type="submit"  onclick="sendAjax()" value="Send" name="send">
+
+
+
+
+</div>
+
+
+
+</body>
+
+
+</html>

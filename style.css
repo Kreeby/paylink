@@ -1,0 +1,105 @@
+@import url(https://fonts.googleapis.com/css?family=Arvo:400,700);
+body {
+  margin: 5%;
+  background-color: #2F333C;
+}
+
+h1 {
+  padding-top: 30px;
+  color: #CD2D3C;
+  font-family: "Arvo", sans-serif;
+  font-size: 14pt;
+}
+
+p {
+  font-family: "Arvo", sans-serif;
+}
+
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
+.receipt {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  background-color: #FFFFFF;
+  width: 280px;
+  height: 425px;
+  margin: 0 auto;
+  -webkit-box-shadow: 0px 0px 47px 9px rgba(0, 0, 0, 0.39);
+  -moz-box-shadow: 0px 0px 47px 9px rgba(0, 0, 0, 0.39);
+  box-shadow: 0px 0px 47px 9px rgba(0, 0, 0, 0.39);
+  -webkit-animation: fade 2s ease both;
+  -moz-animation: fade 2s ease both;
+  animation: fade 2s ease both;
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+.receipt h1 {
+  text-align: center;
+}
+
+.payments table {
+  width: 100%;
+}
+.payments table tr td {
+  margin: 0;
+  padding: 1px 20px;
+}
+.payments table tr td:nth-child(1) {
+  text-align: left;
+}
+.payments table tr td:nth-child(2) {
+  text-align: right;
+}
+
+.total {
+  background: #E6E6E6;
+}
+.total p {
+  color: #171717;
+}
+
+.pay:hover div {
+  background-color: #f44052;
+  cursor: pointer;
+}
+.pay div {
+  background-color: #D64550;
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  padding: 20px 0;
+}
+.pay div p {
+  color: white;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
